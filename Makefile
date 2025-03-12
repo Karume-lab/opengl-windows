@@ -9,7 +9,7 @@ LIB_DIR := lib
 
 # Default filenames
 SRC_FILE ?= main.cpp
-OUT_FILE ?= out.exe
+OUT_FILE ?= OpenGLApp.exe
 
 # Compilation flags
 CXXFLAGS := -I$(INCLUDE_DIR) -L$(LIB_DIR) -lglfw3 -lopengl32
@@ -22,8 +22,10 @@ $(BIN_DIR):
 $(BIN_DIR)/$(OUT_FILE): $(SRC_DIR)/$(SRC_FILE) $(SRC_DIR)/glad.c | $(BIN_DIR)
 	$(CXX) $(SRC_DIR)/$(SRC_FILE) $(SRC_DIR)/glad.c -o $(BIN_DIR)/$(OUT_FILE) $(CXXFLAGS)
 
-# Default target
+# Default target (build and run)
 all: $(BIN_DIR)/$(OUT_FILE)
+	@echo "Build successful! Running the program..."
+	@$(BIN_DIR)/$(OUT_FILE)
 
 # Clean rule
 clean:
